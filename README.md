@@ -100,4 +100,5 @@ $ vvp traffic_lightTB.vcd
 ```
 
 The output should be as follows:
+
 ![Console Output of Traffic Light](assets/output.png)
