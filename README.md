@@ -100,4 +100,4 @@ $ vvp traffic_lightTB.vcd
 ```
 
 The output should be as follows:
-![Console Output of Traffic Light](D:\SUMMER INTERNSHIP 2025\VLSI Internship 2025\Traffic Light\assets\output.png)
+![Console Output of Traffic Light](assets/output.png)
