@@ -36,18 +36,18 @@ First make sure you have MSYS2 & Icarus Verilog installed and set-up. If not, wa
 
 With MSYS2 installed, go to the Windows Search Bar and look for MSYS2MinGW64. A command-based interface will open. The first step is always updating the package databases using pacman package manager. Use this command:
 ```bash
-$ pacman -Syu
+pacman -Syu
 ```
 
 We also need to install __GTK Wave__ for the Signal Waveforms. For that, we will use this command:
 ```bash
-$ pacman -S mingw-w64-x86_64-gtkwave
+pacman -S mingw-w64-x86_64-gtkwave
 ```
 
 
 To verify the installation of GTKWave, run the following command:
 ```bash
-$ gtkwave
+gtkwave
 ```
 If it is, an window should open like this:
 ![Window of GTK Wave](assets/gtkwave.png)
@@ -55,7 +55,7 @@ If it is, an window should open like this:
 
 Now we are all set-up, let's move on with the code. In your PC, go to your directory of choice and clone this repo by running the following code:
 ```bash
-$ gh repo clone surajit-13-sutradhar/Traffic-Light-Controller
+gh repo clone surajit-13-sutradhar/Traffic-Light-Controller
 ```
 
 Delete all the files except trafficLight.v and trafficLightTB.v. We'll be building them again.
@@ -71,7 +71,7 @@ Or, if you are using VSCode, you can directly run this from the terminal.
 
 Now run the following:
 ```bash
-$ iverilog -o traffic_light.vvp trafficLight.v
+iverilog -o traffic_light.vvp trafficLight.v
 ```
 
 (Here **-o** means the output file and we specified the name of the output file as `traffic_light.vvp`. The name is preferably same as of the original source file i.e. `traffic_light` and the extension is `.vvp` which is an intermediate file containing the compiled simulation code. Then we specify the source file which we are compiling i.e. `traffic_light.v`)
@@ -81,7 +81,7 @@ $ iverilog -o traffic_light.vvp trafficLight.v
 
 To run the `.vvp` file you created in last step use this command on MSYS2 command prompt. This won't display anything.
 ```bash
-$ vvp traffic_light.vvp
+vvp traffic_light.vvp
 ```
 
 ## Testbench
@@ -98,14 +98,14 @@ This is the **testbench** that simulates the behavior of the traffic light contr
 
 To compile the testbench file, run the following command.
 ```bash
-$ iverilog -o traffic_light_out.vcd trafficLight.v trafficLightTB.v
+iverilog -o traffic_light_out.vcd trafficLight.v trafficLightTB.v
 ```
 
 The extension `.vcd` is **Value Change Dump** file that logs signal value changes over time during a Verilog simulation for waveform analysis and debugging. As the source file, we not only have to specify the `test bench` file but also the `traffic lights module` file.
 
 Now, run the `.vcd` file using the following command:
 ```bash
-$ vvp traffic_light_out.vcd
+vvp traffic_light_out.vcd
 ```
 The output should be as follows:
 
@@ -113,11 +113,11 @@ The output should be as follows:
 
 This will also generate a traffic_light.vcd file because of this line in our Testbench.
 ```bash
-$ dumpfile("traffic_light.vcd");  // name of output vcd file
+dumpfile("traffic_light.vcd");  // name of output vcd file
 ```
 ## Open the Window in GTKWave
 ```bash
-$ gtkwave traffic_light.vcd
+gtkwave traffic_light.vcd
 ```
 **This will launch the GTKWave GUI where we can:**
 - Expand signals from the left panel.
