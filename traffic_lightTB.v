@@ -25,11 +25,11 @@ module tb_traffic_light;
         // continuously monitor and print the output values during simulation
         $monitor("%0t\t%b\t%b\t%b", $time, red, yellow, green);
 
-        // dump waveform data to a .vcd file (for viewing with gtkwave)
+        // dumping waveform data to a .vcd file (for gtkwave simulation)
         $dumpfile("traffic_light.vcd");         // name of output vcd file
         $dumpvars(0, tb_traffic_light);         // record all variables in this module
 
-        // initialize clock and reset
+        // initialising clock and reset
         clk = 0;        // start clock at 0
         reset = 1;      // activate reset to initialize the system
         #5 reset = 0;   // after 5 time units, deactivate reset

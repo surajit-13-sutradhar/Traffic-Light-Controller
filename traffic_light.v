@@ -1,12 +1,12 @@
 module traffic_light_controller (
-    input clk,           // traffic light r timing k manipulate koribo
+    input clk,           // to manipulate the timing of trafic light
     input reset,         // will reset the controller to base state (eyat red loisu)
     output reg red,      // RED light control signal
     output reg yellow,   // YELLOW light control signal
     output reg green     // GREEN light control signal
 );
 
-    // each state k (green, yellow and red k) 2-bit binary t convert korisu- 00, 01 aaru 10 (11 can be imagined as don't care in this case)
+    // each state has been considered as a 2 bit binary- 00, 01, 10 (11 can be imagined as don't care in this case)
     parameter GREEN = 2'b00, 
               YELLOW = 2'b01, 
               RED = 2'b10;
@@ -17,7 +17,7 @@ module traffic_light_controller (
     // timer to keep track of how long we’ve been in the current state
     reg [3:0] timer;
 
-    // [x:0] mane: 4 bits in total. i.e. 0000 to 1111
+    // [x:0]: x bits in total. i.e. 0000 to 2^x - 1 (in binary)
 
     // this block runs on every rising edge of the clock or when reset is triggered
     always @(posedge clk or posedge reset) begin
@@ -27,7 +27,7 @@ module traffic_light_controller (
             timer <= 0;
         end 
         else begin
-            // update the state to the next state
+            // updating the state to the next state
             state <= next_state;
 
             // timer will count up to a max value depending on the state
