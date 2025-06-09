@@ -40,7 +40,7 @@ module tb_traffic_light;
 
     // automatically stop the simulation after 200 time units
     initial begin
-        #200 $finish;
+        #300 $finish;
     end
 
 endmodule

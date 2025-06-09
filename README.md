@@ -53,18 +53,25 @@ If it is, an window should open like this:
 ![Window of GTK Wave](assets/gtkwave.png)
 
 
-Now we are all set-up, let's move on with the code. Clone this repo by:
+Now we are all set-up, let's move on with the code. In your PC, go to your directory of choice and clone this repo by running the following code:
+```bash
+$ gh repo clone surajit-13-sutradhar/Traffic-Light-Controller
+```
+
+Delete all the files except trafficLight.v and trafficLightTB.v. We'll be building them again.
+
 
 
 Open __MSYS2MinGW64__ from Windows Search Bar and go to your project folder using a command that will look something like:
 ```bash
 cd "D:/Traffic Light"
 ```
+Or, if you are using VSCode, you can directly run this from the terminal.
 
 
 Now run the following:
 ```bash
-$ iverilog -o traffic_light.vvp traffic_light.v
+$ iverilog -o traffic_light.vvp trafficLight.v
 ```
 
 (Here **-o** means the output file and we specified the name of the output file as `traffic_light.vvp`. The name is preferably same as of the original source file i.e. `traffic_light` and the extension is `.vvp` which is an intermediate file containing the compiled simulation code. Then we specify the source file which we are compiling i.e. `traffic_light.v`)
@@ -91,15 +98,37 @@ This is the **testbench** that simulates the behavior of the traffic light contr
 
 To compile the testbench file, run the following command.
 ```bash
-$ iverilog -o traffic_lightTB.vcd traffic_lightTB.v traffic_light.v
+$ iverilog -o traffic_light_out.vcd trafficLight.v trafficLightTB.v
 ```
+
 The extension `.vcd` is **Value Change Dump** file that logs signal value changes over time during a Verilog simulation for waveform analysis and debugging. As the source file, we not only have to specify the `test bench` file but also the `traffic lights module` file.
 
-We can run the `.vcd` file using the following command:
+Now, run the `.vcd` file using the following command:
 ```bash
-$ vvp traffic_lightTB.vcd
+$ vvp traffic_light_out.vcd
 ```
-
 The output should be as follows:
 
 ![Console Output of Traffic Light](assets/output.png)
+
+This will also generate a traffic_light.vcd file because of this line in our Testbench.
+```bash
+$ dumpfile("traffic_light.vcd");  // name of output vcd file
+```
+## Open the Window in GTKWave
+```bash
+$ gtkwave traffic_light.vcd
+```
+**This will launch the GTKWave GUI where we can:**
+- Expand signals from the left panel.
+- Drag them into the waveform view.
+- Zoom in/out and analyze timing transitions.
+
+## The GTKWave Waveform will look like:
+![GTKWave Output of Traffic Light](assets/outputWaveform.png)
+
+
+
+
+
+
