@@ -43,7 +43,7 @@ module traffic_light_controller (
     // combinational logic to decide what is next state
     // and which light (RED, YELLOW, GREEN) should be on
     always @(*) begin
-        // by default sob off
+        // by default all off
         red = 0;
         yellow = 0;
         green = 0;
