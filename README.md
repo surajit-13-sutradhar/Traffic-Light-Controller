@@ -50,6 +50,7 @@ To verify the installation of GTKWave, run the following command:
 $ gtkwave
 ```
 If it is, an window should open like this:
+![Window of GTK Wave](assets/gtkwave.png)
 
 
 Now we are all set-up, let's move on with the code. Clone this repo by:
